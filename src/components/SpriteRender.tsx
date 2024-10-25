@@ -1,15 +1,21 @@
 import { useEffect, useRef } from "react";
 import { SpriteSheetAnalyzer } from "../core/SpriteSheetAnalyzer";
+import { Sprite } from "../core/Sprite";
 
-export const SpriteRender = (props: { image: HTMLImageElement | null }) => {
+export const SpriteRender = (props: { 
+  image: HTMLImageElement | null, 
+  handleSprites: (sprites: Sprite[]) => void 
+}) => {
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    if (!canvasRef.current || !props.image) return; // Verifica se a referência está definida
     
-    const image = props.image;
     const canvas = canvasRef.current;
-    const ctx = canvas?.getContext("2d");
+    const ctx = canvas.getContext("2d");
     const padding = 10;
+    const image = props.image;
 
     if (canvas && ctx && image) {
       
@@ -35,6 +41,8 @@ export const SpriteRender = (props: { image: HTMLImageElement | null }) => {
       const spriteAnalyzer = new SpriteSheetAnalyzer(image);
       const sprites = spriteAnalyzer.sliceSprites();
 
+      props.handleSprites(sprites);
+
       ctx.strokeStyle = "red";
       sprites.forEach((sprite) =>
         ctx.strokeRect(
@@ -44,7 +52,7 @@ export const SpriteRender = (props: { image: HTMLImageElement | null }) => {
           sprite.height
         )
       );
-      
+
     }
   }, [props.image]);
 
