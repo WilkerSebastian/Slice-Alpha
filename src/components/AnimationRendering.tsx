@@ -121,7 +121,7 @@ export const AnimationRendering = (props: { handleAnimation: (animation: Animati
     };
 
     return (
-        <article className="mt-7">
+        <article className="mt-7 mb-14">
             <select
                 onChange={handleAnimation}
                 className="w-full px-4 py-2 mb-6 bg-gray-700 text-white border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-200"
@@ -132,7 +132,7 @@ export const AnimationRendering = (props: { handleAnimation: (animation: Animati
                     </option>
                 ))}
             </select>
-            <canvas id="animationCanvas" width={256} height={256}></canvas>
+            <canvas id="animationCanvas" className="mx-auto" width={256} height={256}></canvas>
             <div className="flex items-center space-x-2 mt-4">
                 <label className="text-white">Stagger Frame:</label>
                 <input

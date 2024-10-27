@@ -82,28 +82,28 @@ export const AnimationForm = (props: {
         <button
           type="button"
           onClick={handleButton}
-          className="py-2 px-4 bg-indigo-500 text-white rounded-md hover:bg-indigo-700 transform hover:scale-105 transition duration-300"
+          className="py-2 px-4 bg-indigo-500 text-white rounded-md hover:bg-indigo-700 transform hover:scale-105 transition duration-300 text-sm lg:text-1xl"
         >
           { lang.add }
         </button>
         <button
           type="button"
           onClick={handleButton}
-          className="py-2 px-4 bg-orange-500 text-white rounded-md hover:bg-orange-700 transform hover:scale-105 transition duration-300"
+          className="py-2 px-4 bg-orange-500 text-white rounded-md hover:bg-orange-700 transform hover:scale-105 transition duration-300 text-sm lg:text-1xl"
         >
           { lang.update }
         </button>
         <button
           type="button"
           onClick={handleButton}
-          className="py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-700 transform hover:scale-105 transition duration-300"
+          className="py-2 px-4 bg-red-500 text-white rounded-md hover:bg-red-700 transform hover:scale-105 transition duration-300 text-sm lg:text-1xl"
         >
           { lang.remove }
         </button>
         <button
           type="button"
           onClick={handleButton}
-          className="py-2 px-4 bg-gray-500 text-white rounded-md hover:bg-gray-700 transform hover:scale-105 transition duration-300"
+          className="py-2 px-4 bg-gray-500 text-white rounded-md hover:bg-gray-700 transform hover:scale-105 transition duration-300 text-sm lg:text-1xl"
         >
           { lang.clear }
         </button>

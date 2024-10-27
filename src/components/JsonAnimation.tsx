@@ -16,7 +16,7 @@ export const JsonAnimation = (props: { handleAnimation: (animation: AnimationDat
     return (<>
         <article className="my-4">
           <AnimationForm handleAnimation={props.handleAnimation} animationData={props.animationData} file={props.file} sprites={props.sprites} />
-          <div className="bg-gray-700 text-white p-4 rounded-md overflow-auto max-w-full max-h-96 min-w-96">
+          <div className="bg-gray-700 text-white p-4 rounded-md overflow-auto w-full">
             <pre className="whitespace-pre-wrap">
               <code className="text-sm font-mono">
                 {json}

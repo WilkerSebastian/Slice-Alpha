@@ -22,21 +22,21 @@ export const App: React.FC = () => {
 
     return (
         <>
-        <main className="min-h-screen flex flex-col items-center justify-center bg-gray-900 p-5">
-            <div className='text-white mt-4 mb-8 w-3/5'>
-                <h1 className=" text-5xl mb-5 text-center f-game text-red-600">Slice Alpha</h1>
-                <p> { lang.readme } </p>
-            </div>
-            <div className='mb-auto'>
-                <LoadImage handleImage={setImage} handleImageName={setImageName} />
-                <SpriteRender image={image} handleSprites={setSprites}/>
-            </div>
-            <section className='flex justify-evenly w-full min-h-96'>
-                <JsonAnimation handleAnimation={handleAnimation} animationData={animationData}  file={imageName} sprites={sprites} />
-                <AnimationRendering handleAnimation={setAnimationData} animation={animationData}/>
-            </section>
-        </main>
-        <DownloadButton data={animationData.formatJson()} />
+            <main className="min-h-screen flex flex-col items-center justify-center bg-gray-900 p-5 max-w-full">
+                <div className='text-white mt-4 mb-8 lg:w-3/5 w-full'>
+                    <h1 className="text-5xl mb-5 text-center f-game text-red-600">Slice Alpha</h1>
+                    <p className='text-base'> { lang.readme } </p>
+                </div>
+                <div className='mb-auto'>
+                    <LoadImage handleImage={setImage} handleImageName={setImageName} />
+                    <SpriteRender image={image} handleSprites={setSprites}/>
+                </div>
+                <section className='flex lg:flex-row flex-col justify-evenly w-full min-h-96'>
+                    <JsonAnimation handleAnimation={handleAnimation} animationData={animationData}  file={imageName} sprites={sprites} />
+                    <AnimationRendering handleAnimation={setAnimationData} animation={animationData}/>
+                </section>
+            </main>
+            <DownloadButton data={animationData.formatJson()} />
         </>
     );
 
