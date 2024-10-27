@@ -12,7 +12,11 @@ export const App: React.FC = () => {
     const [image, setImage] = useState<HTMLImageElement | null>(null);
     const [imageName, setImageName] = useState<string>('');
     const [animationData, setAnimationData] = useState<AnimationData>(new AnimationData());
-    
+
+    const handleAnimation = (animation: AnimationData) => {
+        setAnimationData(new AnimationData(animation));
+    };
+
     return (
         <main className="min-h-screen flex flex-col items-center justify-center bg-gray-900 p-5">
             <div className='text-white mt-4 mb-auto'>
@@ -24,8 +28,8 @@ export const App: React.FC = () => {
                 <SpriteRender image={image} handleSprites={setSprites}/>
             </div>
             <section className='flex justify-evenly items-center w-full min-h-96'>
-                <JsonAnimation handleAnimation={setAnimationData} animationData={animationData}  file={imageName} sprites={sprites} />
-                <AnimationRendering animation={animationData}/>
+                <JsonAnimation handleAnimation={handleAnimation} animationData={animationData}  file={imageName} sprites={sprites} />
+                <AnimationRendering handleAnimation={setAnimationData} animation={animationData}/>
             </section>
         </main>
     );

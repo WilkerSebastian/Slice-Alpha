@@ -1,33 +1,28 @@
 import { useEffect, useState } from "react";
 import { AnimationData } from "../core/AnimationData";
 
-export const AnimationRendering = (props: { animation: AnimationData }) => {
+export const AnimationRendering = (props: { handleAnimation: (animation: AnimationData) => void, animation: AnimationData }) => {
 
-    const [animation, setAnimation] = useState<AnimationData>(props.animation);
     const [animationNames, setAnimationNames] = useState<string[]>([]);
-    const [staggerFrame, setStaggerFrame] = useState<number>(animation.getStaggerFrame());
-
-    useEffect(() => {
-        setAnimation(props.animation);
-    }, [props.animation]);
+    const [staggerFrame, setStaggerFrame] = useState<number>(props.animation.getStaggerFrame());
 
     useEffect(() => {
 
-        const names = animation.getAnimationsName();
+        const names = props.animation.getAnimationsName();
 
         if (names.length !== animationNames.length) {
 
             setAnimationNames(names);
 
-            if (!animation.getCurrentAnimation() && names.length > 0) {
-                animation.setAnimation(names[0]);
-                setAnimation(animation); 
-                setStaggerFrame(animation.getStaggerFrame());
+            if (!props.animation.getCurrentAnimation() && names.length > 0) {
+                props.animation.setAnimation(names[0]);
+                props.handleAnimation(props.animation); 
+                setStaggerFrame(props.animation.getStaggerFrame());
             }
 
         }
 
-    }, [animation, animationNames]);
+    }, [props.animation, animationNames]);
 
     useEffect(() => {  
           
@@ -47,7 +42,7 @@ export const AnimationRendering = (props: { animation: AnimationData }) => {
         
         if (ctx) {
 
-            const size = animation.getSizeAnimation();
+            const size = props.animation.getSizeAnimation();
 
             if (size) {
 
@@ -100,7 +95,7 @@ export const AnimationRendering = (props: { animation: AnimationData }) => {
                 console.log(x, y, width, height);
                 
 
-                animation.render(ctx, x, y, width, height);
+                props.animation.render(ctx, x, y, width, height);
             }
 
             id = requestAnimationFrame(renderFrame);
@@ -110,18 +105,18 @@ export const AnimationRendering = (props: { animation: AnimationData }) => {
 
         return () => cancelAnimationFrame(id);
 
-    }, [animation]);
+    }, [props.animation]);
 
     const handleAnimation: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
         const animationName = e.currentTarget.value;
-        animation.setAnimation(animationName);
-        setAnimation(animation);
+        props.animation.setAnimation(animationName);
+        props.handleAnimation(props.animation);
     };
 
     const handleStaggerFrameChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
         const newStaggerFrame = parseInt(e.currentTarget.value, 10);
         setStaggerFrame(newStaggerFrame);
-        animation.setStaggerFrame(newStaggerFrame);
+        props.animation.setStaggerFrame(newStaggerFrame);
     };
 
     return (
