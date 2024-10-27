@@ -1,0 +1,9 @@
+{
+    "readme": "Slice Alpha is an automatic spritesheet slicer that exports in the JSON format used in Gama Source, making it easier to create and edit sprites for game developers using Gama Source.",
+    "animationName": "Animation Name",
+    "add": "Add",
+    "update": "Update",
+    "remove": "Remove",
+    "clear": "Clear",
+    "download": "Download JSON"
+}

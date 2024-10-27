@@ -121,7 +121,7 @@ export const AnimationRendering = (props: { handleAnimation: (animation: Animati
     };
 
     return (
-        <article>
+        <article className="mt-7">
             <select
                 onChange={handleAnimation}
                 className="w-full px-4 py-2 mb-6 bg-gray-700 text-white border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-200"

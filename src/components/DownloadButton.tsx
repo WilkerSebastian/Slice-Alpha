@@ -1,8 +1,10 @@
 import { useState } from "react";
 import DownloadIcon from '@mui/icons-material/Download';
+import { useLang } from "../hooks/useLang";
 
 export const DownloadButton = (props:{ data: string }) => {
 
+  const { lang } = useLang();
   const [isHovered, setIsHovered] = useState(false);
 
   const downloadJson = () => {
@@ -30,7 +32,7 @@ export const DownloadButton = (props:{ data: string }) => {
       </button>
       {isHovered && (
         <span className={`absolute left-16 bottom-0 bg-gray-800 text-white text-sm rounded px-2 py-1 transition-transform duration-300 ease-in-out ${isHovered ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'}`}>
-          Baixar JSON
+          {lang.download}
         </span>
       )}
     </div>
