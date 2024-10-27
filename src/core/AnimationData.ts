@@ -24,7 +24,7 @@ export class AnimationData {
             name, 
             file, 
             { 
-                width: sprites[0].width, 
+                width: sprites[0].width,
                 height: sprites[0].height
             }, 
             sprites, 
@@ -36,10 +36,17 @@ export class AnimationData {
     }
 
     private calculateStaggerFrame(totalFrames: number): number {
-        return Math.max(1, Math.floor(totalFrames / 10));
-    }
+        
+        const baseStagger = 2;       
+        const exponent = 0.6;        
+        const scalingFactor = 1.2;   
+    
+        return Math.max(1, Math.floor(baseStagger + Math.pow(totalFrames, exponent) * scalingFactor));
 
-    public render(ctx: CanvasRenderingContext2D, x: number, y: number) {
+    }
+    
+
+    public render(ctx: CanvasRenderingContext2D, x: number, y: number, width:number, height: number) {
 
         if (!this.animation || !this.image)
             return
@@ -47,11 +54,6 @@ export class AnimationData {
         const index = Math.floor(this.frame / this.animation.stagger) % this.animation.slices.length;
 
         const slice = this.animation.slices[index];
-
-        let { width, height } = slice;
-
-        width = Math.min(Math.max(width, 64), 512);
-        height = Math.min(Math.max(height, 64), 512);
 
         ctx.drawImage(
             this.image,
@@ -65,9 +67,11 @@ export class AnimationData {
             height
         );
 
+        this.frame++;
+
     }
 
-    public setAniamtion(name: string) {
+    public setAnimation(name: string) {
 
         const animation = this.animations.filter(animation => animation.name === name)[0];
 
@@ -138,8 +142,35 @@ export class AnimationData {
         this.frame = frame;
     }
 
+    public setStaggerFrame(staggerFrame: number) {
+
+        if(this.animation)
+            this.animation.stagger = staggerFrame;
+    
+    }
+
     public formatJson() {
         return JSON.stringify(this.animations, null, 2);
+    }
+
+    public getAnimationsName() {
+        return this.animations.map(animation => animation.name);
+    }
+
+    public getSizeAnimation() {
+        return this.animation?.pixel
+    }
+
+    public getCurrentAnimation() {
+        return this.animation
+    }
+
+    public getStaggerFrame() {
+        return this.animation?.stagger ?? 0
+    }
+
+    public getAnimations() {
+        return this.animations
     }
 
 }

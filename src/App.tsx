@@ -1,10 +1,10 @@
-// src/App.tsx
 import React, { useState } from 'react';
 import { LoadImage } from './components/LoadImage';
 import { SpriteRender } from './components/SpriteRender';
 import { JsonAnimation } from './components/JsonAnimation';
 import { AnimationData } from './core/AnimationData';
 import { Sprite } from './core/Sprite';
+import { AnimationRendering } from './components/AnimationRendering';
 
 export const App: React.FC = () => {
 
@@ -23,8 +23,9 @@ export const App: React.FC = () => {
                 <LoadImage handleImage={setImage} handleImageName={setImageName} />
                 <SpriteRender image={image} handleSprites={setSprites}/>
             </div>
-            <section>
+            <section className='flex justify-evenly items-center w-full min-h-96'>
                 <JsonAnimation handleAnimation={setAnimationData} animationData={animationData}  file={imageName} sprites={sprites} />
+                <AnimationRendering animation={animationData}/>
             </section>
         </main>
     );
