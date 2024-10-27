@@ -122,9 +122,14 @@ export const AnimationRendering = (props: { handleAnimation: (animation: Animati
 
     return (
         <article>
-            <select onChange={handleAnimation}>
+            <select
+                onChange={handleAnimation}
+                className="w-full px-4 py-2 mb-6 bg-gray-700 text-white border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400 transition duration-200"
+                >
                 {animationNames.map(name => (
-                    <option key={name} value={name}>{name}</option>
+                    <option key={name} value={name} className="bg-gray-800 text-white">
+                    {name}
+                    </option>
                 ))}
             </select>
             <canvas id="animationCanvas" width={256} height={256}></canvas>
