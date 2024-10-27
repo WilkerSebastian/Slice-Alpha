@@ -5,6 +5,7 @@ import { JsonAnimation } from './components/JsonAnimation';
 import { AnimationData } from './core/AnimationData';
 import { Sprite } from './core/Sprite';
 import { AnimationRendering } from './components/AnimationRendering';
+import { DownloadButton } from './components/DownloadButton';
 
 export const App: React.FC = () => {
 
@@ -18,6 +19,7 @@ export const App: React.FC = () => {
     };
 
     return (
+        <>
         <main className="min-h-screen flex flex-col items-center justify-center bg-gray-900 p-5">
             <div className='text-white mt-4 mb-auto'>
                 <h1 className=" text-5xl mb-5 text-center f-game text-red-600">Slice Alpha</h1>
@@ -32,6 +34,8 @@ export const App: React.FC = () => {
                 <AnimationRendering handleAnimation={setAnimationData} animation={animationData}/>
             </section>
         </main>
+        <DownloadButton data={animationData.formatJson()} />
+        </>
     );
 
 };
