@@ -117,6 +117,7 @@ export const AnimationRendering = (props: { handleAnimation: (animation: Animati
         const newStaggerFrame = parseInt(e.currentTarget.value, 10);
         setStaggerFrame(newStaggerFrame);
         props.animation.setStaggerFrame(newStaggerFrame);
+        props.handleAnimation(props.animation);
     };
 
     return (
