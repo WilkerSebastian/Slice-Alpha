@@ -1,50 +1,65 @@
-# React + TypeScript + Vite
+<img src="./slice_alpha.png">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[Slice Alpha](https://slice-alpha.onrender.com/) is a web application built with React, TypeScript, and Vite, designed to simplify sprite sheet creation and editing for game developers. With support for exporting in Gama Source-compatible JSON format, Slice Alpha optimizes your workflow.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Automatic sprite sheet slicing**: Detects and extracts sprites automatically.
+- **JSON export**: Compatible with Gama Source for easy integration.
+- **User-friendly interface**: Designed for an intuitive and streamlined experience.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Requirements
+
+- **Bun**: Version 1.33 or higher
+
+### Installation Steps
+
+1. Clone the repository:
+```bash
+git clone https://github.com/WilkerSebastian/Slice-Alpha.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+2. Install dependencies: 
+```bash
+bun install
 ```
+3. Start the application: 
+```bash
+bun run dev
+```
+
+---
+### Contributing
+Steps to Contribute
+Fork the repository: 
+```bash
+git fork https://github.com/WilkerSebastian/Slice-Alpha.git
+```
+
+Create a branch for your feature: 
+```bash
+git checkout -b your-feature
+```
+
+Make changes and commit: 
+```bash
+git commit -m "Your feature"
+```
+
+Submit a pull request 
+
+---
+### Issues
+
+Open an issue to report bugs or suggest new features
+Provide sufficient details for us to understand and resolve the issue
+
+---
+### License
+Slice Alpha is licensed under the MIT License.
